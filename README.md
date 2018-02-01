@@ -6,12 +6,13 @@
 
 * Enabled CORS for easy plug and play
 
-*Unit/Integration Testing done with Rspec
+* Unit/Integration Testing done with Rspec
 
-* Sample test using Postman with Ajax....
+* Sample tests using Postman with Ajax....
 
-##GET /images
-`var settings = {
+### GET /images
+
+``var settings = {
   "async": true,
   "crossDomain": true,
   "url": "http://localhost:3000/images",
@@ -24,10 +25,11 @@
 
 $.ajax(settings).done(function (response) {
   console.log(response);
-});`
+});``
 
-##POST /images
-`var form = new FormData();
+### POST /images
+
+```var form = new FormData();
 form.append("image", "Ben.png");
 
 var settings = {
@@ -47,4 +49,4 @@ var settings = {
 
 $.ajax(settings).done(function (response) {
   console.log(response);
-});`
+});```
