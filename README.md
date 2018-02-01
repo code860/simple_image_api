@@ -12,7 +12,8 @@
 
 ### GET /images
 
-``var settings = {
+```
+var settings = {
   "async": true,
   "crossDomain": true,
   "url": "http://localhost:3000/images",
@@ -22,14 +23,16 @@
     "postman-token": "864574e9-edab-da6f-9a3c-a231900e0d2e"
   }
 }
-
+```
+```
 $.ajax(settings).done(function (response) {
   console.log(response);
-});``
-
+});
+```
 ### POST /images
 
-```var form = new FormData();
+```
+var form = new FormData();
 form.append("image", "Ben.png");
 
 var settings = {
@@ -49,4 +52,5 @@ var settings = {
 
 $.ajax(settings).done(function (response) {
   console.log(response);
-});```
+});
+```
