@@ -21,15 +21,17 @@ class Image
   def self.upload(image_data)
     success = true
     msg = "Successfully uploaded file"
+    new_img_path = ""
     begin
       img = self.new(image_data)
       Dir.mkdir(IMAGES_PATH) unless Dir.exist?(IMAGES_PATH)
       File.open(img.full_file_path, "wb") { |f| f.write(image_data.read)}
+      new_img_path = img.stored_file_name
     rescue Exception => e
       success = false
       msg = e.to_s
     end
-    return {success: success, message: msg}
+    return {success: success, message: msg, img_path: new_img_path }
   end
 
 
@@ -62,6 +64,7 @@ class Image
     validate_type
     validate_size(image_data)
     @stored_file_name = "#{SecureRandom.urlsafe_base64}.#{file_type}"
+    image_data.rewind
   end
 
 
@@ -85,7 +88,7 @@ class Image
 
   #Get the dimensions using the Image Size Gem
   def get_dimensions(image_data)
-    image_data.rewind
+    image_data.rewind #Just in case
     img = ImageSize.new(image_data.read)
     @width = img.width
     @height = img.height

@@ -76,10 +76,7 @@ RSpec.describe Image, type: :model do
       img_result = Image.upload(valid_png_image)
       expect(img_result[:success]).to be(true)
       expect(Dir.exist?(Image::IMAGES_PATH)).to be(true)
-      img_retreive_result = Image.all
-      expect(img_retreive_result[:success]).to be(true)
-      expect(img_retreive_result[:image_paths]).to be_a(Array)
-      expect(img_retreive_result[:image_paths].length).to be(1)
+      expect(img_result[:img_path].blank?).to be(false)
     end
   end
 end

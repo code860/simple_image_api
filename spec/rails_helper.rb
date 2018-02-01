@@ -28,6 +28,7 @@ RSpec.configure do |config|
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
   config.include FileMockHelper::MockUpload
+  config.include RequestHelpers::JsonHelper
   #
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
