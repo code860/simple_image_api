@@ -8,7 +8,7 @@ class Image
   MAX_SIZE = 5000
 
   #Instance Methods
-  attr_reader :width, :height,:original_filename, :file_type, :stored_file_name
+  attr_reader :width, :height, :original_filename, :file_type, :stored_file_name
   def initialize(image_data)
     validate_and_set(image_data)
   end
@@ -23,7 +23,7 @@ class Image
     msg = "Successfully uploaded file"
     begin
       img = self.new(image_data)
-      Dir.mkdir(IMAGES_PATH) unless Dir.exist?(IMAGE_PATH)
+      Dir.mkdir(IMAGES_PATH) unless Dir.exist?(IMAGES_PATH)
       File.open(img.full_file_path, "wb") { |f| f.write(image_data.read)}
     rescue Exception => e
       success = false
@@ -38,8 +38,8 @@ class Image
     msg = "Successfully retrieved images"
     image_paths = []
     begin
-      if Dir.exist?(IMAGE_PATH)
-        Dir.chdir(IMAGE_PATH)
+      if Dir.exist?(IMAGES_PATH)
+        Dir.chdir(IMAGES_PATH)
         image_paths = Dir.glob(['*.png', '*.jpg' ])
       else
         Dir.mkdir(IMAGES_PATH)
